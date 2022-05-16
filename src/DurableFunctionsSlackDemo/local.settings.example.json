@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "KeyVaultUrl": "https://<your-keyvault>.vault.azure.net/",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  }
+}

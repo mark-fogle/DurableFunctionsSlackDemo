@@ -1,0 +1,38 @@
+{
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "Request ID {{instanceId}} requires approval"
+      }
+    },
+    {
+      "type": "actions",
+      "block_id": "{{instanceId}}",
+      "elements": [
+        {
+          "type": "button",
+          "style": "primary",
+          "text": {
+            "type": "plain_text",
+            "text": "Approve"
+          },
+          "value": "approved",
+          "action_id": "button_approve"
+        },
+        {
+          "type": "button",
+          "style": "danger",
+          "text": {
+            "type": "plain_text",
+            "text": "Deny"
+          },
+          "value": "denied",
+          "action_id": "button_deny"
+        }
+
+      ]
+    }
+  ]
+}
