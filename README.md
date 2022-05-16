@@ -15,7 +15,7 @@ This code creates a demonstration workflow using Azure durable functions. The wo
 
 ## Workflow Diagram
 
-![Workflow Diagram](.\docs\images\DurableFunctionsSlackDemo.drawio.png)
+![Workflow Diagram](/docs/images/DurableFunctionsSlackDemo.drawio.png)
 
 ## Slack Application Setup
 
