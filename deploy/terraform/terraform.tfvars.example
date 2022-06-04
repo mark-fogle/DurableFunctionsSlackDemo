@@ -1,0 +1,3 @@
+prefix = "MyPrefix"
+location = "EastUS"
+slack-url = "https://hooks.slack.com/services/<your-webhook>"
