@@ -39,7 +39,7 @@ resource "azurerm_service_plan" "app-plan" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Windows"
-  sku_name            = "S1"
+  sku_name            = "Y1"
 }
 
 resource "azurerm_application_insights" "appinsights" {
@@ -67,7 +67,7 @@ resource "azurerm_key_vault" "keyvault" {
     object_id = data.azurerm_client_config.current.object_id
 
     secret_permissions = [
-      "Get","List","Set","Delete"
+      "Get","List","Set","Delete","Purge"
     ]
   }
 }
@@ -105,7 +105,7 @@ resource "azurerm_windows_function_app" "durable-functions-slack-demo" {
   functions_extension_version = "~4"
 
   app_settings = {
-    "SlackApprovalServiceOptions:SlackWebhookUrl" = "@Microsoft.KeyVault(VaultName=${azurerm_key_vault.keyvault.name};SecretName=SlackApprovalServiceOptions--SlackWebhookUrl)"
+    "SlackApprovalServiceOptions:SlackWebhookUrl" = "@Microsoft.KeyVault(VaultName=${azurerm_key_vault.keyvault.name};SecretName=${azurerm_key_vault_secret.slackurl.name})"
   }
   
   key_vault_reference_identity_id = azurerm_user_assigned_identity.user-identity.id
@@ -116,7 +116,6 @@ resource "azurerm_windows_function_app" "durable-functions-slack-demo" {
   }
 
   site_config {
-    always_on                              = true
     application_insights_key               = azurerm_application_insights.appinsights.instrumentation_key
     application_insights_connection_string = azurerm_application_insights.appinsights.connection_string
     application_stack {
